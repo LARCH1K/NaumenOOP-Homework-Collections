@@ -1,5 +1,8 @@
 package ru.naumen.collection.task1;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Дано:
  * <pre>
@@ -24,6 +27,11 @@ package ru.naumen.collection.task1;
  */
 public class Task1
 {
+    //Выбрал HashMap, так как мгновенно получаем объект по ключу (за исключением коллизии),
+    //при условии, что метод hashCode и equals переопределены
+    //Сложность каждого get = O(1) => общая сложность O(n), где n - число гостей мероприятия
+    private final Map<Ticket, Goods> ticketGoodsHashMap = new HashMap<>();
+
     public enum Goods {
         /**
          * нет товаров
@@ -47,7 +55,6 @@ public class Task1
      * <p>Достаточно их определить только для id, т.к. он уникален</p>
      */
     public Goods getGoods(Ticket ticket) {
-        // TODO реализовать
-        return null;
+        return ticketGoodsHashMap.get(ticket);
     }
 }
